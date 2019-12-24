@@ -18,3 +18,17 @@ func Get(c *gin.Context) {
 	fmt.Println("do something!!")
 	return
 }
+
+func Create(c *gin.Context) {
+	params := struct {
+		Name string `json:"name" form:"name"`
+		Age  int    `json:"age" form:"age"`
+	}{}
+
+	if err := c.ShouldBindJSON(&params); err != nil {
+		panic(err)
+	}
+
+	fmt.Println("do something!!")
+	return
+}
